@@ -1,6 +1,8 @@
 // connecting and creating database
-const sqlite3 = require('sqlite3').verbose();
-let d_base = new sqlite3.Database(':memory:', err => {
+const sqlite3 = require('sqlite3');
+const express = require("express");
+var 
+let db = new sqlite3.Database(':memory:', err => {
     if(err) {
         return console.error(err.message);
     }
@@ -8,8 +10,10 @@ let d_base = new sqlite3.Database(':memory:', err => {
 });
 
 
+
+
 // closing database
-d_base.close((err) => {
+db.close((err) => {
     if(err) {
         return console.error(err.message);
     }
