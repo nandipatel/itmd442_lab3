@@ -13,19 +13,16 @@ const db = new sqlite3.Database('./database/contacts.db', (err) => {
         return console.error(err.message);
     } else {
         db.run('CREATE TABLE IF NOT EXISTS contacts (\
-            id INTEGER PRIMARY KEY,\
+            id INTEGER PRIMARY KEY AUTOINCREMENT,\
             f_name NVARCHAR(500),\
             l_name NVARCHAR(500) "",\
             email NVARCHAR(500) "",\
             note NVARCHAR(500) "",\
-            date_time DATETIME\
+            date_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP\
           );')
     }
     console.log('Connected to database.')
 });
-
-
-
 
 // closing database
 db.close((err) => {
